@@ -1,8 +1,8 @@
-package org.app.manager;
+package org.learn;
 
-import org.app.manager.config.AppConfig;
-import org.app.manager.service.PersonService;
-import org.app.manager.util.AnalyticsUtil;
+import org.learn.config.AppConfig;
+import org.learn.service.PersonService;
+import org.learn.util.AnalyticsUtil;
 
 import java.io.IOException;
 

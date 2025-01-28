@@ -1,9 +1,9 @@
-package org.app.manager.config;
+package org.learn.config;
 
-import org.app.manager.database.Database;
-import org.app.manager.datasource.PersonDataSource;
-import org.app.manager.repository.PersonRepository;
-import org.app.manager.service.PersonService;
+import org.learn.database.Database;
+import org.learn.datasource.PersonDataSource;
+import org.learn.repository.PersonRepository;
+import org.learn.service.PersonService;
 
 /**
  * The AppConfig class is responsible for configuring and providing instances of various components

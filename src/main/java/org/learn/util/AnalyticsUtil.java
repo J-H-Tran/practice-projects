@@ -1,4 +1,4 @@
-package org.app.manager.util;
+package org.learn.util;
 
 import java.util.Map;
 import java.util.stream.Collectors;

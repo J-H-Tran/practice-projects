@@ -1,4 +1,4 @@
-package org.app.manager.database;
+package org.learn.database;
 
 import java.util.ArrayList;
 import java.util.List;

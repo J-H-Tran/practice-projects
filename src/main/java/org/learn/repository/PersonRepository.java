@@ -1,7 +1,7 @@
-package org.app.manager.repository;
+package org.learn.repository;
 
-import org.app.manager.database.Database;
-import org.app.manager.datasource.PersonDataSource;
+import org.learn.database.Database;
+import org.learn.datasource.PersonDataSource;
 
 import java.util.Map;
 import java.util.stream.Collectors;

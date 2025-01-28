@@ -1,4 +1,4 @@
-package org.app.manager.database;
+package org.learn.database;
 
 public class Node {
     private int key;

@@ -1,6 +1,6 @@
-package org.app.manager.service;
+package org.learn.service;
 
-import org.app.manager.repository.PersonRepository;
+import org.learn.repository.PersonRepository;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

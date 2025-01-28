@@ -1,4 +1,4 @@
-package org.app.manager.util;
+package org.learn.util;
 
 import java.util.List;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package org.app.manager.datasource;
+package org.learn.datasource;
 
 import java.util.HashMap;
 import java.util.Map;

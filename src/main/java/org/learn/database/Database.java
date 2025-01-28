@@ -1,6 +1,6 @@
-package org.app.manager.database;
+package org.learn.database;
 
-import org.app.manager.util.RecordUtil;
+import org.learn.util.RecordUtil;
 
 import java.util.Map;
 
