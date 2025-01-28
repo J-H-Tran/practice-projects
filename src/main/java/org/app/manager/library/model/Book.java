@@ -9,18 +9,18 @@ import jakarta.persistence.Id;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String title;
     private String author;
     private String isbn;
-    private int publicationYear;
+    private Long publicationYear;
     private boolean isAvailable;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -48,11 +48,11 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public int getPublicationYear() {
+    public Long getPublicationYear() {
         return publicationYear;
     }
 
-    public void setPublicationYear(int publicationYear) {
+    public void setPublicationYear(Long publicationYear) {
         this.publicationYear = publicationYear;
     }
 

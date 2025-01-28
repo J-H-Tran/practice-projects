@@ -27,7 +27,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book findBookById(int id) {
+    public Book findBookById(Long id) {
         return bookRepo.findById(id).orElseThrow(() -> {
             logger.error("Book not found with id: {}", id);
             return new NoSuchElementException("Book not found with id: " + id);
@@ -43,7 +43,7 @@ public class BookServiceImpl implements BookService {
 
     @Transactional
     @Override
-    public void deleteBookById(int id) {
+    public void deleteBookById(Long id) {
         if (!bookRepo.existsById(id)) {
             logger.error("Book not found with ID: {}", id);
             throw new NoSuchElementException("Book not found with id: " + id);

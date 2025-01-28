@@ -27,7 +27,7 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public Member findMemberById(int id) {
+    public Member findMemberById(Long id) {
         logger.info("Fetching member with id: {}", id);
         return memberRepo.findById(id).orElseThrow(() -> {
             logger.error("Member not found with id: {}", id);
@@ -45,7 +45,7 @@ public class MemberServiceImpl implements MemberService {
 
     @Transactional
     @Override
-    public void deleteMemberById(int id) {
+    public void deleteMemberById(Long id) {
         if (!memberRepo.existsById(id)) {
             logger.error("Member not found with id: {}, Unable to delete", id);
             throw new NoSuchElementException("Member not found with id: " + id);

@@ -31,7 +31,7 @@ public class BorrowRecordCommands {
     }
 
     @ShellMethod("Find a borrow record by ID")
-    public BorrowRecord findBorrowRecord(int id) {
+    public BorrowRecord findBorrowRecord(Long id) {
         try {
             logger.info("Finding borrow record with ID: {}", id);
             return borrowRecordService.findBorrowRecordById(id);
@@ -42,7 +42,7 @@ public class BorrowRecordCommands {
     }
 
     @ShellMethod("Borrow a book")
-    public String borrowBook(int bookId, int memberId) {
+    public String borrowBook(Long bookId, Long memberId) {
         if (!bookService.findBookById(bookId).isAvailable()) {
             logger.error("Book is not available for borrowing");
             return "Book is not available for borrowing";
@@ -57,7 +57,7 @@ public class BorrowRecordCommands {
     }
 
     @ShellMethod("Return a book")
-    public String returnBook(int id) {
+    public String returnBook(Long id) {
         BorrowRecord borrowRecord = borrowRecordService.findBorrowRecordById(id);
         if (borrowRecord == null) {
             logger.error("Borrow record not found");
@@ -70,7 +70,7 @@ public class BorrowRecordCommands {
     }
 
     @ShellMethod("Delete a borrow record by ID")
-    public String deleteBorrowRecord(int id) {
+    public String deleteBorrowRecord(Long id) {
         try {
             logger.info("Deleting borrow record with ID: {}", id);
             BorrowRecord borrowRecord = borrowRecordService.findBorrowRecordById(id);

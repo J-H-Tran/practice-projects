@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface BorrowRecordService {
     List<BorrowRecord> findAllBorrowRecords();
-    BorrowRecord findBorrowRecordById(int id);
+    BorrowRecord findBorrowRecordById(Long id);
     BorrowRecord saveBorrowRecord(BorrowRecord borrowRecord);
-    void deleteBorrowRecordById(int id);
-    List<BorrowRecord> findBorrowRecordsByMemberId(int memberId);
-    List<BorrowRecord> findBorrowRecordsByBookId(int bookId);
+    void deleteBorrowRecordById(Long id);
+    List<BorrowRecord> findBorrowRecordsByMemberId(Long memberId);
+    List<BorrowRecord> findBorrowRecordsByBookId(Long bookId);
 }

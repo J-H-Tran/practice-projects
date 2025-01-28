@@ -98,6 +98,12 @@
                     <target>21</target>
                 </configuration>
             </plugin>
+            <!-- Spring Boot Plugin -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.1.4</version>
+            </plugin>
         </plugins>
     </build>
 </project>

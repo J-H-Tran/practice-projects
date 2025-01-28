@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface BorrowRecordRepository extends JpaRepository<BorrowRecord, Integer> {
-    List<BorrowRecord> findBorrowRecordsByMemberId(int memberId);
-    List<BorrowRecord> findBorrowRecordsByBookId(int bookId);
+public interface BorrowRecordRepository extends JpaRepository<BorrowRecord, Long> {
+    List<BorrowRecord> findBorrowRecordsByMemberId(Long memberId);
+    List<BorrowRecord> findBorrowRecordsByBookId(Long bookId);
 }

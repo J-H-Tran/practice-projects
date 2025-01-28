@@ -27,7 +27,7 @@ public class BookCommands {
     }
 
     @ShellMethod("Find a book by ID")
-    public Book findBook(@ShellOption int id) {
+    public Book findBook(@ShellOption Long id) {
         try {
             logger.info("Finding book with ID: {}", id);
             return bookService.findBookById(id);
@@ -43,7 +43,7 @@ public class BookCommands {
             @ShellOption String title,
             @ShellOption String author,
             @ShellOption String isbn,
-            @ShellOption int publicationYear
+            @ShellOption Long publicationYear
     ) {
         if (title == null || title.isEmpty() || author == null || author.isEmpty() || isbn == null || isbn.isEmpty()) {
             logger.error("Error: Title, author, and ISBN must not be empty");
@@ -60,7 +60,7 @@ public class BookCommands {
     }
 
     @ShellMethod("Delete a book by ID")
-    public String deleteBook(@ShellOption int id) {
+    public String deleteBook(@ShellOption Long id) {
         try {
             logger.info("Deleting book with ID: {}", id);
             Book book = bookService.findBookById(id);

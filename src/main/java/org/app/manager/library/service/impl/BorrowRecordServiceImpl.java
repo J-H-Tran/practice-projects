@@ -26,7 +26,7 @@ public class BorrowRecordServiceImpl implements BorrowRecordService {
     }
 
     @Override
-    public BorrowRecord findBorrowRecordById(int id) {
+    public BorrowRecord findBorrowRecordById(Long id) {
         logger.info("Fetching borrow record with id: {}", id);
         return borrowRecordRepo.findById(id).orElseThrow(() -> {
             logger.error("Borrow record not found with id: {}", id);
@@ -41,7 +41,7 @@ public class BorrowRecordServiceImpl implements BorrowRecordService {
     }
 
     @Override
-    public void deleteBorrowRecordById(int id) {
+    public void deleteBorrowRecordById(Long id) {
         if (!borrowRecordRepo.existsById(id)) {
             logger.error("Borrow record not found with ID: {}", id);
             throw new NoSuchElementException("Borrow record not found with id: " + id);
@@ -51,13 +51,13 @@ public class BorrowRecordServiceImpl implements BorrowRecordService {
     }
 
     @Override
-    public List<BorrowRecord> findBorrowRecordsByMemberId(int memberId) {
+    public List<BorrowRecord> findBorrowRecordsByMemberId(Long memberId) {
         logger.info("Finding borrow records for member ID: {}", memberId);
         return borrowRecordRepo.findBorrowRecordsByMemberId(memberId);
     }
 
     @Override
-    public List<BorrowRecord> findBorrowRecordsByBookId(int bookId) {
+    public List<BorrowRecord> findBorrowRecordsByBookId(Long bookId) {
         logger.info("Finding borrow records for book ID: {}", bookId);
         return borrowRecordRepo.findBorrowRecordsByBookId(bookId);
     }

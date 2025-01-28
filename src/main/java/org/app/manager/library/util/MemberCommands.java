@@ -28,7 +28,7 @@ public class MemberCommands {
     }
 
     @ShellMethod("Find a member by ID")
-    public Member findMember(@ShellOption int id) {
+    public Member findMember(@ShellOption Long id) {
         try {
             logger.info("Finding member with ID: {}", id);
             return memberService.findMemberById(id);
@@ -56,7 +56,7 @@ public class MemberCommands {
     }
 
     @ShellMethod("Delete a member by ID")
-    public String deleteMember(@ShellOption int id) {
+    public String deleteMember(@ShellOption Long id) {
         try {
             logger.info("Deleting member with ID: {}", id);
             Member member = memberService.findMemberById(id);
