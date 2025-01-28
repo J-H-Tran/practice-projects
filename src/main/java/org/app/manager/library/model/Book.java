@@ -16,15 +16,6 @@ public class Book {
     private int publicationYear;
     private boolean isAvailable;
 
-    public Book(int id, String title, String author, String isbn, int publicationYear, boolean isAvailable) {
-        this.id = id;
-        this.title = title;
-        this.author = author;
-        this.isbn = isbn;
-        this.publicationYear = publicationYear;
-        this.isAvailable = isAvailable;
-    }
-
     public int getId() {
         return id;
     }

@@ -16,13 +16,6 @@ public class Member {
     private String email;
     private LocalDate membershipDate;
 
-    public Member(int id, String name, String email, LocalDate membershipDate) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.membershipDate = membershipDate;
-    }
-
     public int getId() {
         return id;
     }

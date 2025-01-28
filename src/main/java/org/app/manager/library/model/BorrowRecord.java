@@ -17,14 +17,6 @@ public class BorrowRecord {
     private LocalDate borrowDate;
     private LocalDate returnDate;
 
-    public BorrowRecord(int id, int memberId, int bookId, LocalDate borrowDate, LocalDate returnDate) {
-        this.id = id;
-        this.memberId = memberId;
-        this.bookId = bookId;
-        this.borrowDate = borrowDate;
-        this.returnDate = returnDate;
-    }
-
     public int getId() {
         return id;
     }
