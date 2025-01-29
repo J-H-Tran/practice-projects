@@ -4,9 +4,11 @@ This is a Library Management System built with Spring Boot. It allows you to man
 
 ## Features
 
-- Manage books (add, list, find, delete)
-- Manage members (add, list, find, delete)
-- Manage borrow records (borrow, return, list, find, delete)
+- Manage books (add, list, find, delete, update)
+- Manage members (add, list, find, delete, update)
+- Manage borrow records (borrow, return, list, find, delete, update)
+- Search books by title, author, or ISBN
+- Generate reports for borrowed books
 
 ## Technologies Used
 
@@ -14,6 +16,8 @@ This is a Library Management System built with Spring Boot. It allows you to man
 - Spring Boot
 - Maven
 - SLF4J for logging
+- H2 Database for development
+- PostgreSQL for production
 
 ## Getting Started
 
@@ -49,15 +53,19 @@ This is a Library Management System built with Spring Boot. It allows you to man
   ```sh
   listBooks
   ```
-- **Find a libBook by ID**:
+- **Find a book by ID**:
   ```sh
   findBook --id <bookId>
   ```
-- **Add a new libBook**:
+- **Add a new book**:
   ```sh
   addBook --title <title> --author <author> --isbn <isbn> --publicationYear <year>
   ```
-- **Delete a libBook by ID**:
+- **Update a book by ID**:
+  ```sh
+  updateBook --id <bookId> --title <title> --author <author> --isbn <isbn> --publicationYear <year>
+  ```
+- **Delete a book by ID**:
   ```sh
   deleteBook --id <bookId>
   ```
@@ -67,15 +75,19 @@ This is a Library Management System built with Spring Boot. It allows you to man
   ```sh
   listMembers
   ```
-- **Find a libMember by ID**:
+- **Find a member by ID**:
   ```sh
   findMember --id <memberId>
   ```
-- **Add a new libMember**:
+- **Add a new member**:
   ```sh
   addMember --name <name> --email <email>
   ```
-- **Delete a libMember by ID**:
+- **Update a member by ID**:
+  ```sh
+  updateMember --id <memberId> --name <name> --email <email>
+  ```
+- **Delete a member by ID**:
   ```sh
   deleteMember --id <memberId>
   ```
@@ -89,13 +101,17 @@ This is a Library Management System built with Spring Boot. It allows you to man
   ```sh
   findBorrowRecord --id <recordId>
   ```
-- **Borrow a libBook**:
+- **Borrow a book**:
   ```sh
   borrowBook --bookId <bookId> --memberId <memberId>
   ```
-- **Return a libBook**:
+- **Return a book**:
   ```sh
   returnBook --id <recordId>
+  ```
+- **Update a borrow record by ID**:
+  ```sh
+  updateBorrowRecord --id <recordId> --bookId <bookId> --memberId <memberId> --borrowDate <date> --returnDate <date>
   ```
 - **Delete a borrow record by ID**:
   ```sh
