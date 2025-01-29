@@ -5,24 +5,25 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-public class LibBook {
+public class LibMember {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank
-    private String title;
-    @NotBlank
-    private String author;
+    @NotEmpty
+    private String name;
+    @NotEmpty
+    private String email;
     @NotNull
-    private Long isbn;
+    private LocalDate membershipDate;
 
-    @OneToMany(mappedBy = "book")
+    @OneToMany(mappedBy = "libMember")
     private List<BorrowRecord> borrowRecords;
 
     public Long getId() {
@@ -33,28 +34,28 @@ public class LibBook {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getEmail() {
+        return email;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public Long getIsbn() {
-        return isbn;
+    public LocalDate getMembershipDate() {
+        return membershipDate;
     }
 
-    public void setIsbn(Long isbn) {
-        this.isbn = isbn;
+    public void setMembershipDate(LocalDate membershipDate) {
+        this.membershipDate = membershipDate;
     }
 
     public List<BorrowRecord> getBorrowRecords() {
@@ -67,11 +68,12 @@ public class LibBook {
 
     @Override
     public String toString() {
-        return "LibBook{" +
+        return "Member{" +
                 "id=" + id +
-                ", title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", isbn=" + isbn +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", membershipDate=" + membershipDate +
+                ", borrowRecords=" + borrowRecords +
                 '}';
     }
 }

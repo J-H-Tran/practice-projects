@@ -16,12 +16,8 @@ import java.util.Optional;
 public class LibBookCommands {
     private final Logger logger = LoggerFactory.getLogger(LibBookCommands.class);
 
-    private final LibBookService libBookService;
-
     @Autowired
-    public LibBookCommands(LibBookService libBookService) {
-        this.libBookService = libBookService;
-    }
+    private LibBookService libBookService;
 
     @ShellMethod(key = "add-book")
     public String addBook(
