@@ -49,15 +49,15 @@ This is a Library Management System built with Spring Boot. It allows you to man
   ```sh
   listBooks
   ```
-- **Find a book by ID**:
+- **Find a libBook by ID**:
   ```sh
   findBook --id <bookId>
   ```
-- **Add a new book**:
+- **Add a new libBook**:
   ```sh
   addBook --title <title> --author <author> --isbn <isbn> --publicationYear <year>
   ```
-- **Delete a book by ID**:
+- **Delete a libBook by ID**:
   ```sh
   deleteBook --id <bookId>
   ```
@@ -67,15 +67,15 @@ This is a Library Management System built with Spring Boot. It allows you to man
   ```sh
   listMembers
   ```
-- **Find a member by ID**:
+- **Find a libMember by ID**:
   ```sh
   findMember --id <memberId>
   ```
-- **Add a new member**:
+- **Add a new libMember**:
   ```sh
   addMember --name <name> --email <email>
   ```
-- **Delete a member by ID**:
+- **Delete a libMember by ID**:
   ```sh
   deleteMember --id <memberId>
   ```
@@ -89,11 +89,11 @@ This is a Library Management System built with Spring Boot. It allows you to man
   ```sh
   findBorrowRecord --id <recordId>
   ```
-- **Borrow a book**:
+- **Borrow a libBook**:
   ```sh
   borrowBook --bookId <bookId> --memberId <memberId>
   ```
-- **Return a book**:
+- **Return a libBook**:
   ```sh
   returnBook --id <recordId>
   ```

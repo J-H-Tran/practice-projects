@@ -28,7 +28,7 @@ public class LibMemberCommands {
         member.setMembershipDate(LocalDateTime.now());
         libMemberService.addMember(member);
 
-        return "Member added: " + member.toString();
+        return "Member added: " + member;
     }
 
     @ShellMethod(key = "get-member-id")

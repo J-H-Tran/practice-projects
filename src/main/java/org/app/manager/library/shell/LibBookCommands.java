@@ -31,7 +31,7 @@ public class LibBookCommands {
         book.setIsbn(isbn);
         libBookService.addBook(book);
 
-        return "Book added: " + book.toString();
+        return "Book added: " + book;
     }
 
     @ShellMethod(key = "get-book-id")
