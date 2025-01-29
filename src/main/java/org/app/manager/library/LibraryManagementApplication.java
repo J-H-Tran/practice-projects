@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = "org.app.manager.library.repository")
-public class LibraryManagementSystemApplication {
+public class LibraryManagementApplication {
     public static void main(String[] args) {
-        SpringApplication.run(LibraryManagementSystemApplication.class, args);
+        SpringApplication.run(LibraryManagementApplication.class, args);
     }
 }

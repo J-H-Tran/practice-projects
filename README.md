@@ -4,9 +4,11 @@ This is a Library Management System built with Spring Boot. It allows you to man
 
 ## Features
 
-- Manage books (add, list, find, delete)
-- Manage members (add, list, find, delete)
-- Manage borrow records (borrow, return, list, find, delete)
+- Manage books (add, list, find, delete, update)
+- Manage members (add, list, find, delete, update)
+- Manage borrow records (borrow, return, list, find, delete, update)
+- Search books by title, author, or ISBN
+- Generate reports for borrowed books
 
 ## Technologies Used
 
@@ -14,6 +16,8 @@ This is a Library Management System built with Spring Boot. It allows you to man
 - Spring Boot
 - Maven
 - SLF4J for logging
+- H2 Database for development
+- PostgreSQL for production
 
 ## Getting Started
 
@@ -57,6 +61,10 @@ This is a Library Management System built with Spring Boot. It allows you to man
   ```sh
   addBook --title <title> --author <author> --isbn <isbn> --publicationYear <year>
   ```
+- **Update a book by ID**:
+  ```sh
+  updateBook --id <bookId> --title <title> --author <author> --isbn <isbn> --publicationYear <year>
+  ```
 - **Delete a book by ID**:
   ```sh
   deleteBook --id <bookId>
@@ -74,6 +82,10 @@ This is a Library Management System built with Spring Boot. It allows you to man
 - **Add a new member**:
   ```sh
   addMember --name <name> --email <email>
+  ```
+- **Update a member by ID**:
+  ```sh
+  updateMember --id <memberId> --name <name> --email <email>
   ```
 - **Delete a member by ID**:
   ```sh
@@ -96,6 +108,10 @@ This is a Library Management System built with Spring Boot. It allows you to man
 - **Return a book**:
   ```sh
   returnBook --id <recordId>
+  ```
+- **Update a borrow record by ID**:
+  ```sh
+  updateBorrowRecord --id <recordId> --bookId <bookId> --memberId <memberId> --borrowDate <date> --returnDate <date>
   ```
 - **Delete a borrow record by ID**:
   ```sh

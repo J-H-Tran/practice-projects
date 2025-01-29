@@ -1,20 +1,33 @@
 package org.app.manager.library.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+import java.util.List;
 
 @Entity
-public class Book {
+public class LibBook {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank
     private String title;
+    @NotBlank
     private String author;
-    private String isbn;
-    private Long publicationYear;
-    private boolean isAvailable;
+    @NotNull
+    private Long isbn;
+
+    @OneToMany(
+            mappedBy = "libraryBook"
+    )
+    @JsonManagedReference
+    private List<BorrowRecord> borrowRecords;
 
     public Long getId() {
         return id;
@@ -40,39 +53,29 @@ public class Book {
         this.author = author;
     }
 
-    public String getIsbn() {
+    public Long getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(String isbn) {
+    public void setIsbn(Long isbn) {
         this.isbn = isbn;
     }
 
-    public Long getPublicationYear() {
-        return publicationYear;
+    public List<BorrowRecord> getBorrowRecords() {
+        return borrowRecords;
     }
 
-    public void setPublicationYear(Long publicationYear) {
-        this.publicationYear = publicationYear;
-    }
-
-    public boolean isAvailable() {
-        return isAvailable;
-    }
-
-    public void setAvailable(boolean available) {
-        isAvailable = available;
+    public void setBorrowRecords(List<BorrowRecord> borrowRecords) {
+        this.borrowRecords = borrowRecords;
     }
 
     @Override
     public String toString() {
-        return "Book{" +
+        return "LibBook{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
-                ", isbn='" + isbn + '\'' +
-                ", publicationYear=" + publicationYear +
-                ", isAvailable=" + isAvailable +
+                ", isbn=" + isbn +
                 '}';
     }
 }
