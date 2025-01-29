@@ -5,6 +5,7 @@ target/
 *.db
 bin/
 *.log
+*/generator/
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
