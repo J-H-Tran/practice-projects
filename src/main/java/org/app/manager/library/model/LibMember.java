@@ -1,6 +1,9 @@
 package org.app.manager.library.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -8,7 +11,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -17,13 +20,18 @@ public class LibMember {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotEmpty
-    private String name;
+    private String fullName;
     @NotEmpty
     private String email;
     @NotNull
-    private LocalDate membershipDate;
+    private LocalDateTime membershipDate;
 
-    @OneToMany(mappedBy = "libMember")
+    @OneToMany(
+            mappedBy = "libraryMember",
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL
+    )
+    @JsonManagedReference
     private List<BorrowRecord> borrowRecords;
 
     public Long getId() {
@@ -34,12 +42,12 @@ public class LibMember {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getEmail() {
@@ -50,11 +58,11 @@ public class LibMember {
         this.email = email;
     }
 
-    public LocalDate getMembershipDate() {
+    public LocalDateTime getMembershipDate() {
         return membershipDate;
     }
 
-    public void setMembershipDate(LocalDate membershipDate) {
+    public void setMembershipDate(LocalDateTime membershipDate) {
         this.membershipDate = membershipDate;
     }
 
@@ -70,7 +78,7 @@ public class LibMember {
     public String toString() {
         return "Member{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + fullName + '\'' +
                 ", email='" + email + '\'' +
                 ", membershipDate=" + membershipDate +
                 ", borrowRecords=" + borrowRecords +

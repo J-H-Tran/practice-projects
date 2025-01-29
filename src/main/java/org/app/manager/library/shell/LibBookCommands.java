@@ -25,12 +25,13 @@ public class LibBookCommands {
             @ShellOption String author,
             @ShellOption Long isbn
     ) {
-        LibBook libBook = new LibBook();
-        libBook.setTitle(title);
-        libBook.setAuthor(author);
-        libBook.setIsbn(isbn);
-        libBookService.addBook(libBook);
-        return "Book added: " + libBook.toString();
+        LibBook book = new LibBook();
+        book.setTitle(title);
+        book.setAuthor(author);
+        book.setIsbn(isbn);
+        libBookService.addBook(book);
+
+        return "Book added: " + book.toString();
     }
 
     @ShellMethod(key = "get-book-id")
@@ -38,6 +39,7 @@ public class LibBookCommands {
             @ShellOption Long id
     ) {
         Optional<LibBook> book = libBookService.getBookById(id);
+
         return book.map(value -> "Book found: " + value).orElse("Book not found");
     }
 

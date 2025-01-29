@@ -1,6 +1,9 @@
 package org.app.manager.library.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -22,7 +25,10 @@ public class LibBook {
     @NotNull
     private Long isbn;
 
-    @OneToMany(mappedBy = "book")
+    @OneToMany(
+            mappedBy = "libraryBook"
+    )
+    @JsonManagedReference
     private List<BorrowRecord> borrowRecords;
 
     public Long getId() {

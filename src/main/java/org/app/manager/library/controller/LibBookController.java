@@ -19,8 +19,8 @@ public class LibBookController {
     }
 
     @PostMapping
-    public void addBook(@RequestBody LibBook libBook) {
-        libBookService.addBook(libBook);
+    public void addBook(@RequestBody LibBook book) {
+        libBookService.addBook(book);
     }
 
     @GetMapping("/{id}")

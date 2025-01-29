@@ -10,7 +10,7 @@ import org.app.manager.library.service.LibBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,26 +18,17 @@ import java.util.Optional;
 public class LibBookServiceImpl implements LibBookService {
 
     @Autowired
-    private LibBookRepository libBookRepository;
+    private BorrowRecordRepository borrowRecordRepository;
 
     @Autowired
-    private BorrowRecordRepository borrowRecordRepository;
+    private LibBookRepository libBookRepository;
 
     @Autowired
     private LibMemberRepository libMemberRepository;
 
-    // because we are autowiring the book repo for crud ops
-    // we can focus on business logic in the service layer
-    // TODO: create/implement meaningful methods for business logic
-    public boolean isBookAvailable(Long bookId, Long memberId) {
-        Optional<BorrowRecord> activeBorrowRecord =
-                borrowRecordRepository.findByBookIdAndLibMemberIdAndReturnDateIsNull(bookId, memberId);
-        return activeBorrowRecord.isEmpty();
-    }
-
     @Override
-    public void addBook(LibBook libBook) {
-        libBookRepository.save(libBook);
+    public void addBook(LibBook book) {
+        libBookRepository.save(book);
     }
 
     @Override
@@ -64,28 +55,12 @@ public class LibBookServiceImpl implements LibBookService {
 
         if (book.isPresent() && member.isPresent()) {
             BorrowRecord borrowRecord = new BorrowRecord();
-            borrowRecord.setBook(book.get());
-            borrowRecord.setLibMember(member.get());
-            borrowRecord.setBorrowDate(LocalDate.now());
+            borrowRecord.setLibraryBook(book.get());
+            borrowRecord.setLibraryMember(member.get());
+            borrowRecord.setBorrowDate(LocalDateTime.now());
             borrowRecordRepository.save(borrowRecord);
         } else {
             throw new IllegalArgumentException("Book or Member not found.");
-        }
-    }
-
-    public void returnBook(
-            Long bookId,
-            Long memberId
-    ) {
-        Optional<BorrowRecord> borrowRecord =
-                borrowRecordRepository.findByBookIdAndLibMemberIdAndReturnDateIsNull(bookId, memberId);
-
-        if (borrowRecord.isPresent()) {
-            BorrowRecord record = borrowRecord.get();
-            record.setReturnDate(LocalDate.now());
-            borrowRecordRepository.save(record);
-        } else {
-            throw new IllegalArgumentException("Borrow record not found.");
         }
     }
 }

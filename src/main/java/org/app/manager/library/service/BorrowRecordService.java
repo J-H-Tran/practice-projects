@@ -10,5 +10,4 @@ public interface BorrowRecordService {
     Optional<BorrowRecord> getBorrowRecordById(Long id);
     List<BorrowRecord> getAllBorrowRecords();
     void removeBorrowRecord(Long id);
-    Optional<BorrowRecord> findActiveBorrowRecord(Long bookId, Long memberId);
 }

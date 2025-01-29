@@ -6,6 +6,7 @@ import org.app.manager.library.service.BorrowRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +18,8 @@ public class BorrowRecordServiceImpl implements BorrowRecordService {
 
     @Override
     public void addBorrowRecord(BorrowRecord borrowRecord) {
+        LocalDateTime borrowDate = borrowRecord.getBorrowDate();
+        borrowRecord.setReturnDate(borrowDate);
         borrowRecordRepository.save(borrowRecord);
     }
 
@@ -33,13 +36,5 @@ public class BorrowRecordServiceImpl implements BorrowRecordService {
     @Override
     public void removeBorrowRecord(Long id) {
         borrowRecordRepository.deleteById(id);
-    }
-
-    @Override
-    public Optional<BorrowRecord> findActiveBorrowRecord(
-            Long bookId,
-            Long memberId
-    ) {
-        return borrowRecordRepository.findByBookIdAndLibMemberIdAndReturnDateIsNull(bookId, memberId);
     }
 }

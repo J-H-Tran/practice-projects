@@ -6,7 +6,7 @@ import org.app.manager.library.service.LibMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,12 +16,13 @@ public class LibMemberServiceImpl implements LibMemberService {
     @Autowired
     private LibMemberRepository libMemberRepository;
 
+    @Override
     public boolean isMembershipValid(Long memberId) {
         Optional<LibMember> member = libMemberRepository.findById(memberId);
 
         if (member.isPresent()) {
-            LocalDate membershipDate = member.get().getMembershipDate();
-            return membershipDate.isAfter(LocalDate.now().minusYears(1));
+            LocalDateTime membershipDate = member.get().getMembershipDate();
+            return membershipDate.isAfter(LocalDateTime.now().minusYears(1));
         }
         return false;
     }

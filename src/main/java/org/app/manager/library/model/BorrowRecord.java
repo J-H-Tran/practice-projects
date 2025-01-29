@@ -1,5 +1,7 @@
 package org.app.manager.library.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -8,7 +10,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 public class BorrowRecord {
@@ -17,17 +20,21 @@ public class BorrowRecord {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "book_id", insertable = false, updatable = false)
-    private LibBook book;
+    @JoinColumn(name = "book_id", nullable = false)
+    @JsonBackReference
+    @JsonIgnore
+    private LibBook libraryBook;
 
     @ManyToOne
-    @JoinColumn(name = "member_id", insertable = false, updatable = false)
-    private LibMember libMember;
+    @JoinColumn(name = "member_id", nullable = false)
+    @JsonBackReference
+    @JsonIgnore
+    private LibMember libraryMember;
 
     @NotNull
-    private LocalDate borrowDate;
+    private LocalDateTime borrowDate;
     @NotNull
-    private LocalDate returnDate;
+    private LocalDateTime returnDate;
 
     public Long getId() {
         return id;
@@ -37,43 +44,43 @@ public class BorrowRecord {
         this.id = id;
     }
 
-    public LocalDate getBorrowDate() {
+    public LocalDateTime getBorrowDate() {
         return borrowDate;
     }
 
-    public void setBorrowDate(LocalDate borrowDate) {
+    public void setBorrowDate(LocalDateTime borrowDate) {
         this.borrowDate = borrowDate;
     }
 
-    public LocalDate getReturnDate() {
+    public LocalDateTime getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(LocalDate returnDate) {
-        this.returnDate = returnDate;
+    public void setReturnDate(LocalDateTime returnDate) {
+        this.returnDate = returnDate.plusDays(30).with(LocalTime.of(20,0));
     }
-    public LibBook getBook() {
-        return book;
-    }
-
-    public void setBook(LibBook book) {
-        this.book = book;
+    public LibBook getLibraryBook() {
+        return libraryBook;
     }
 
-    public LibMember getLibMember() {
-        return libMember;
+    public void setLibraryBook(LibBook libraryBook) {
+        this.libraryBook = libraryBook;
     }
 
-    public void setLibMember(LibMember libMember) {
-        this.libMember = libMember;
+    public LibMember getLibraryMember() {
+        return libraryMember;
+    }
+
+    public void setLibraryMember(LibMember libraryMember) {
+        this.libraryMember = libraryMember;
     }
 
     @Override
     public String toString() {
         return "BorrowRecord{" +
                 "id=" + id +
-                ", book=" + book +
-                ", libMember=" + libMember +
+                ", bookId=" + (libraryBook != null ? libraryBook.getId() : null) +
+                ", memberId=" + (libraryMember != null ? libraryMember.getId() : null) +
                 ", borrowDate=" + borrowDate +
                 ", returnDate=" + returnDate +
                 '}';
