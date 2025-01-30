@@ -3,6 +3,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 *.db
+*.log
+*.csv
+generator/
 bin/
 *.log
 generator/

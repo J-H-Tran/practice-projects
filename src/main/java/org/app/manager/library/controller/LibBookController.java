@@ -11,12 +11,9 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/books")
 public class LibBookController {
-    private final LibBookService libBookService;
 
     @Autowired
-    public LibBookController(LibBookService libBookService) {
-        this.libBookService = libBookService;
-    }
+    private LibBookService libBookService;
 
     @PostMapping
     public void addBook(@RequestBody LibBook book) {
