@@ -65,11 +65,11 @@ public class LibBookCommands {
 
     @ShellMethod(key = "export-books")
     public String exportBooksToCSV(
-            @ShellOption String filePath
+            @ShellOption String fileName
     ) {
         try {
-            libBookService.exportBooksToCSV(filePath);
-            return "Books exported to current directory: " + filePath;
+            libBookService.exportBooksToCSV(fileName);
+            return "Books exported to current directory: " + fileName;
         } catch (IOException e) {
             return "Error exporting books: " + e.getMessage();
         }
