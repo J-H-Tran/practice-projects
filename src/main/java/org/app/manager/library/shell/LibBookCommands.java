@@ -9,6 +9,7 @@ import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellOption;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,6 +60,18 @@ public class LibBookCommands {
         } else {
             logger.warn("Book not found with ID: {}", id);
             return "Book not found with ID: " + id;
+        }
+    }
+
+    @ShellMethod(key = "export-books")
+    public String exportBooksToCSV(
+            @ShellOption String filePath
+    ) {
+        try {
+            libBookService.exportBooksToCSV(filePath);
+            return "Books exported to current directory: " + filePath;
+        } catch (IOException e) {
+            return "Error exporting books: " + e.getMessage();
         }
     }
 }

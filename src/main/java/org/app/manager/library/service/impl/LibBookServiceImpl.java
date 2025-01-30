@@ -10,6 +10,9 @@ import org.app.manager.library.service.LibBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -61,6 +64,37 @@ public class LibBookServiceImpl implements LibBookService {
             borrowRecordRepository.save(borrowRecord);
         } else {
             throw new IllegalArgumentException("Book or Member not found.");
+        }
+    }
+
+    @Override
+    public void exportBooksToCSV(String fileName) throws IOException {
+        String currentDir = System.getProperty("user.dir");
+        String filePath = Paths.get(currentDir, fileName).toString();
+
+        List<LibBook> books = getAllBooks();
+
+        try (FileWriter fw = new FileWriter(filePath)) {
+            fw.write("ID,Title,Author,ISBN\n");
+
+            books.stream()
+                .map(book -> {
+                    StringBuilder sb = new StringBuilder();
+
+                    sb.append(book.getId()).append(",")
+                        .append(book.getTitle()).append(",")
+                        .append(book.getAuthor()).append(",")
+                        .append(book.getIsbn());
+
+                    return sb.toString();
+                })
+                .forEach(line -> {
+                    try {
+                        fw.write(line + "\n");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
         }
     }
 }
