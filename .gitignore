@@ -3,9 +3,10 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 *.db
-bin/
 *.log
+*.csv
 generator/
+bin/
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
