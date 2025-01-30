@@ -69,6 +69,9 @@ public class LibBookServiceImpl implements LibBookService {
 
     @Override
     public void exportBooksToCSV(String fileName) throws IOException {
+        if (!fileName.endsWith(".csv")) {
+            fileName += ".csv";
+        }
         String currentDir = System.getProperty("user.dir");
         String filePath = Paths.get(currentDir, fileName).toString();
 
